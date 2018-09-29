@@ -1,0 +1,89 @@
+@import '~colors.scss';
+
+.start{
+  background:$black;
+  min-height:100vh;
+
+  .main-block{
+    min-height:100vh;
+    background-image:url(../../../assets/images/bg-start.png);
+    background-size:cover;
+    background-color:$black;
+    position:relative;
+    padding:20px;
+    text-align:center;
+
+    .logo{
+      text-align:left;
+    }
+    .titles{
+      color:$white;
+      h1{
+        font-weight:bold;
+        text-transform:uppercase;
+        font-size:63px;
+      }
+      p{
+        font-size:25px;
+      }
+      padding:40px 0;
+    }
+    .social-login{
+      button{
+        font-size:18px;
+        padding:7px 25px;
+        border-radius:20px;
+        margin:0 5px 20px 5px;
+        border:0;
+        i{
+          margin-right:4px;
+        }
+        &.facebook{
+          background-color:$fb_bg;
+          &:hover{
+            background-color:darken($fb_bg, 10%);
+          }
+        }
+        &.twitter{
+          background-color:$tw_bg;
+          &:hover{
+            background-color:darken($tw_bg, 10%);
+          }
+        }
+      }
+      p{
+        font-size:20px;
+        text-transform:uppercase;
+        color:$white;
+      }
+      .guest-session{
+        font-size:20px;
+        text-decoration:underline;
+        color:$white;
+        transition:0.2s;
+        &:hover{
+          opacity:0.8;
+        }
+      }
+    }
+  }
+  .gallery-block{
+    min-height:100vh;
+    background-image:url(../../../assets/images/bg-start-2.jpg);
+    background-size:cover;
+    position:relative;
+    padding:20px;
+    text-align:center;
+    color:$white;
+
+    h1{
+      font-size:60px;
+      font-weight:bold;
+      text-transform:uppercase;
+    }
+    p{
+      text-align:right;
+      font-size:25px;
+    }
+  }
+}

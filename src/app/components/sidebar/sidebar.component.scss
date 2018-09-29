@@ -1,0 +1,77 @@
+@import '~colors.scss';
+
+.sidebar{
+  width:300px;
+  background:$darkGrey;
+  box-shadow:2px 0 10px darken($pink, 40%);
+  height:100vh;
+  position:fixed;
+  top:0;
+  left:0;
+  bottom:0;
+
+  .logo-sidebar{
+    text-align:center;
+    padding:40px 20px;
+    img{
+      max-width:160px;
+    }
+  }
+  .search{
+    padding:0 25px;
+    position:relative;
+    margin-bottom:40px;
+    input{
+      background:none;
+      border:0;
+      border-radius:0;
+      border-bottom:1px solid $lightGrey;
+      padding-left:30px;
+      font-size:17px;
+      color:$white;
+      &:focus{
+        box-shadow:none;
+      }
+    }
+    &::before{
+      content:'\f002';
+      font-family:FontAwesome;
+      display:inline-block;
+      font-size:16px;
+      color:$lightGrey;
+      position:absolute;
+      top:6px;
+      left:25px;
+    }
+  }
+  .menu{
+    ul{
+      padding:0;
+      li{
+        display:block;
+        a{
+          padding:5px 20px;
+          font-size:18px;
+          display:block;
+          color:$white;
+          transition:0.2s;
+          text-decoration:none;
+          border-left:5px solid transparent;
+          &.active, &:hover:not(.title){
+            background:$black;
+            border-image:linear-gradient(to bottom, lighten($pink, 5%), darken($purple, 10%)) 1 100%;
+          }
+          &.title{
+            font-weight:bold;
+          }
+          i{
+            margin-right:4px;
+          }
+        }
+        &.separator{
+          margin-bottom:20px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+<div class="sidebar">
+  <div class="logo-sidebar">
+    <img src="assets/images/logo.svg" title="SoundHouse" alt="SoundHouse" />
+  </div>
+  <div class="search">
+    <form>
+      <div class="form-group">
+        <input type="text" name="search" class="form-control" placeholder="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="menu">
+    <ul>
+      <li><a [routerLink]="['/home']" [routerLinkActive]="['active']">Home</a></li>
+      <li><a [routerLink]="['/browse']" [routerLinkActive]="['active']">Browse</a></li>
+      <li class="separator"></li>
+      <li><a class="title">Your Music</a></li>
+      <li><a [routerLink]="['/songs']" [routerLinkActive]="['active']">My Songs</a></li>
+      <li><a [routerLink]="['/artist']" [routerLinkActive]="['active']">Artist</a></li>
+      <li class="separator"></li>
+      <li><a class="title">Playlists</a></li>
+      <li>
+        <a [routerLink]="['/playlists','create']" [routerLinkActive]="['active']">
+          <i class="fa fa-plus"></i>
+          Create a playlist
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

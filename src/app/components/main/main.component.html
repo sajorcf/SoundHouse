@@ -1,0 +1,25 @@
+<app-sidebar></app-sidebar>
+<content>
+  <div class="row">
+    <div class="col-md-8">
+      <h1><b>Welcome, Andrés</b></h1>
+      <h3>Select genres of your interest</h3>
+    </div>
+    <div class="col-md-4 text-right">
+      <button *ngIf="!listSelected.length" class="btn noBg" (click)="router.navigate(['home'])">Skip >></button>
+      <button *ngIf="listSelected.length" class="btn noBg" (click)="saveGenres()">Continue >></button>
+    </div>
+  </div>
+  <!-- Genres -->
+  <div class="section genres">
+    <div class="row">
+      <div class="col-md-3 genres-box" *ngFor="let genre of listGenres">
+        <div class="genre" [ngClass]="func.inArray(genre.code, listSelected) ? 'selected' : ''"
+          (click)="selectGenre($event, genre.code)">
+          <h4>{{genre.name}}</h4>
+          <div class="image" [ngStyle]="{'background-image':'url(assets/images/genres/'+genre.image+')'}"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</content>

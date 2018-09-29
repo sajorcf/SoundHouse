@@ -1,0 +1,57 @@
+<app-sidebar></app-sidebar>
+<content>
+  <div class="row">
+    <div class="col-md-12">
+      <h1><b>Made for you</b></h1>
+      <h3>Music specially selected for you</h3>
+    </div>
+  </div>
+  <!-- Album -->
+  <div class="section albums">
+    <div class="row">
+      <div class="col-md-3 albums-box">
+        <div class="album">
+          <h4>Weekly</h4>
+          <div class="image" [ngStyle]="{'background-image':'url(assets/images/albums/weekly.jpg)'}"></div>
+        </div>
+      </div>
+      <div class="col-md-3 albums-box">
+        <div class="album">
+          <h4>Weekly</h4>
+          <div class="image" [ngStyle]="{'background-image':'url(assets/images/albums/weekly.jpg)'}"></div>
+        </div>
+      </div>
+      <div class="col-md-3 albums-box">
+        <div class="album">
+          <h4>Weekly</h4>
+          <div class="image" [ngStyle]="{'background-image':'url(assets/images/albums/weekly.jpg)'}"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <h3><b>Explore by genre</b></h3>
+    </div>
+    <div class="col-md-4 text-right">
+      <button class="btn noBg" (click)="router.navigate(['genres'])">See more</button>
+    </div>
+  </div>
+  <!-- Radio -->
+  <div class="section albums">
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <h3><b>Radio</b></h3>
+    </div>
+    <div class="col-md-4 text-right">
+      <button class="btn noBg" (click)="router.navigate(['radio'])">See more</button>
+    </div>
+  </div>
+  <!-- Radio -->
+  <div class="section radio">
+  </div>
+</content>
+<app-player></app-player>
