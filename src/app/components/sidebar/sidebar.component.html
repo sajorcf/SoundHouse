@@ -5,7 +5,8 @@
   <div class="search">
     <form>
       <div class="form-group">
-        <input type="text" name="search" class="form-control" placeholder="Search" />
+        <input type="text" name="search" [(ngModel)]="q" class="form-control" placeholder="Search" />
+        <input type="submit" (click)="router.navigate(['/browse',q])" value="Search" class="d-none">
       </div>
     </form>
   </div>
@@ -15,16 +16,54 @@
       <li><a [routerLink]="['/browse']" [routerLinkActive]="['active']">Browse</a></li>
       <li class="separator"></li>
       <li><a class="title">Your Music</a></li>
-      <li><a [routerLink]="['/songs']" [routerLinkActive]="['active']">My Songs</a></li>
+      <li><a [routerLink]="['/me','songs']" [routerLinkActive]="['active']">My Songs</a></li>
       <li><a [routerLink]="['/artist']" [routerLinkActive]="['active']">Artist</a></li>
       <li class="separator"></li>
       <li><a class="title">Playlists</a></li>
       <li>
-        <a [routerLink]="['/playlists','create']" [routerLinkActive]="['active']">
+        <a (click)="playlist.openPopup()">
           <i class="fa fa-plus"></i>
           Create a playlist
         </a>
       </li>
+      <li *ngFor="let plist of playlist.listPlaylists">
+        <a [routerLink]="['/playlist',plist.url]" [routerLinkActive]="['active']">{{plist.name}}</a></li>
     </ul>
+  </div>
+</div>
+<!-- Playlists Create -->
+<div class="playlists-create">
+  <div class="playlists-box">
+    <div class="title">
+      Create Playlist
+      <button class="btn noBg close" (click)="playlist.closePopup()"></button>
+      </div>
+    <form>
+      <div class="row">
+        <div class="col-md-5">
+          <label>Image</label>
+          <label for="upload-image" class="image-rendering"></label>
+          <input type="file" id="upload-image" />
+        </div>
+        <div class="col-md-7">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input id="name" type="text" class="form-control" name="name" [(ngModel)]="name" placeholder="Playlist name" />
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" class="form-control" name="description" rows="5" [(ngModel)]="description" placeholder="Playlist description"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row text-right mt-3">
+        <div class="col-md-12">
+          <div class="form-group d-block w-100">
+            <button type="button" class="btn noBg cancel" (click)="playlist.closePopup()">Cancel</button>
+            <button type="button" class="btn btn-primary create" (click)="createPlaylist()">Create</button>
+          </div>
+        </div>
+      </div>
+    </form>
   </div>
 </div>

@@ -4,3 +4,4 @@
     <img src="assets/images/loading.svg" title="Cargando..."/>
   </div>
 </div>
+<app-player *ngIf="!router.url.includes('main') || !router.url.includes('start')"></app-player>

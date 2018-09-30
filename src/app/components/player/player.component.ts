@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PlayerService } from '../../services/player.service';
+import { SongsService } from '../../services/songs.service';
 
 @Component({
   selector: 'app-player',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlayerComponent implements OnInit {
 
-  constructor() { }
+
+
+  constructor( public mPlayer:PlayerService, public song:SongsService ) {
+
+  }
 
   ngOnInit() {
+
   }
 
 }

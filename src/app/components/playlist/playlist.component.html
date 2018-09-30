@@ -1,0 +1,167 @@
+<app-sidebar></app-sidebar>
+<content class="hasPlayer">
+  <div class="row">
+    <div class="col-md-12">
+      <button class="btn noBg inTitle" (click)="func.goBack()"><i class="fa fa-angle-left"></i></button>
+      <button class="btn noBg inTitle" (click)="func.goForward()"><i class="fa fa-angle-right"></i></button>
+      <div class="playlist-title">
+        <img src="assets/images/portada.jpg" />
+        <div class="texts">
+          <h1><b>{{pl_data.name}}</b></h1>
+          <h3>Created by You - {{pl_data.songs.length}}</h3>
+          <button class="btn playlist play">Play</button>
+          <button class="btn noBg playlist-actions" (click)="func.openActions($event)">
+            <ul class="actions">
+              <li class="sub">Share Playlist
+                <ul>
+                  <li>Facebook</li>
+                  <li>Twitter</li>
+                  <li>Copy URL</li>
+                </ul>
+              </li>
+              <li>Delete</li>
+            </ul>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Playlists -->
+  <div class="section" *ngIf="!pl_data.songs.length">
+    <div class="row">
+      <div class="col-md-12 text-center mt-5">
+        <h1><b>Start adding songs</b></h1>
+        <p>Add recomended songs or browse and add songs to the playlist using right click.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 mt-5">
+        <h2 class="table-title">Recommended Songs</h2>
+        <button type="button" class="btn btn-primary reload">Reload</button>
+        <div class="table-responsive">
+          <table class="table">
+            <tbody>
+              <tr *ngFor="let video of pl_recommended">
+                <td (click)="player.play(video)"><img [src]="video.snippet.thumbnails.default.url"/></td>
+                <td width="80px">
+                  <button class="btn noBg heart" (click)="song.favClicked($event, video)"></button>
+                  <button class="btn noBg song-actions noULine"
+                    (click)="func.openActions($event)">
+                    <ul class="actions">
+                      <li>Add to My Songs</li>
+                      <li>Add to queue</li>
+                      <li class="sub">Add to playlist
+                        <ul>
+                          <li *ngFor="let plist of playlist.listPlaylists"
+                            (click)="playlist.add(plist.url, video)">{{plist.name}}</li>
+                          <li (click)="playlist.openPopup()"><i class="fa fa-plus"></i>
+                            Create a playlist
+                          </li>
+                        </ul>
+                      </li>
+                      <li>Share Song</li>
+                    </ul>
+                  </button>
+                </td>
+                <td>{{video.snippet.title}}</td>
+                <td>{{video.snippet.channelTitle}}</td>
+                <td class="text-right">
+                  <button class="btn noBg"><i class="fa fa-microphone"></i></button>
+                  3:55
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section songs" *ngIf="pl_data.songs.length">
+    <div class="row">
+      <div class="col-md-12">
+        <ul class="nav nav-tabs">
+          <li><a data-toggle="tab" href="#all" class="active">Show All</a></li>
+          <li><a data-toggle="tab" href="#audio">Solo Audio</a></li>
+          <li><a data-toggle="tab" href="#lyrics">Solo Lyrics</a></li>
+          <li class="search float-right">
+            <form>
+              <div class="form-group">
+                <input type="text" name="search" class="form-control" placeholder="Search" />
+              </div>
+            </form>
+          </li>
+        </ul>
+
+        <div class="tab-content">
+          <div id="all" class="tab-pane fade in active show">
+            <div class="table-responsive">
+              <table class="table">
+                <tbody>
+                  <tr *ngFor="let video of pl_data.songs">
+                    <td (click)="player.play(video)"><img [src]="video.snippet.thumbnails.default.url"/></td>
+                    <td width="80px">
+                      <button class="btn noBg heart" (click)="song.favClicked($event, video)"></button>
+                      <button class="btn noBg song-actions noULine"
+                        (click)="func.openActions($event)">
+                        <ul class="actions">
+                          <li>Add to My Songs</li>
+                          <li>Add to queue</li>
+                          <li class="sub">Add to playlist
+                            <ul>
+                              <li *ngFor="let plist of playlist.listPlaylists"
+                                (click)="playlist.add(plist.url, video)">{{plist.name}}</li>
+                              <li (click)="playlist.openPopup()"><i class="fa fa-plus"></i>
+                                Create a playlist
+                              </li>
+                            </ul>
+                          </li>
+                          <li>Share Song</li>
+                        </ul>
+                      </button>
+                    </td>
+                    <td>{{video.snippet.title}}</td>
+                    <td>{{video.snippet.channelTitle}}</td>
+                    <td class="text-right">
+                      <button class="btn noBg"><i class="fa fa-microphone"></i></button>
+                      3:55
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div id="audio" class="tab-pane fade">
+            <div class="table-responsive">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td>foto</td>
+                    <td>actions</td>
+                    <td>nombre</td>
+                    <td>grupo</td>
+                    <td>tiempo</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div id="lyrics" class="tab-pane fade">
+            <div class="table-responsive">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td>foto</td>
+                    <td>actions</td>
+                    <td>nombre</td>
+                    <td>grupo</td>
+                    <td>tiempo</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</content>

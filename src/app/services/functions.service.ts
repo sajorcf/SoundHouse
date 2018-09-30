@@ -1,11 +1,29 @@
 import { Injectable } from '@angular/core';
+import  {Location } from '@angular/common';
 import * as $ from 'jquery';
 import 'rxjs/Rx' ;
 
 @Injectable()
 export class FunctionsService {
 
-  constructor(){ }
+  constructor( private location:Location ){ }
+
+  goBack(){
+    this.location.back();
+  }
+  goForward(){
+    this.location.forward();
+  }
+
+  openActions(e){
+    var e = $(e.target);
+    $('.song-actions>ul, .playlist-actions>ul').slideUp(50);
+    if(e.find('>ul').is(':visible')){
+      e.find('>ul').slideUp(100);
+    }else{
+      e.find('>ul').slideDown(100);
+    }
+  }
 
   showLoading(element = '.loading'){
     $('body').css('overflow','hidden');

@@ -10,10 +10,11 @@
   box-shadow:0 -1px 10px $black;
   padding:0 25px;
   color:$white;
+  z-index:1000;
 
   .titles{
     img{
-      width:151px;
+      width:85px;
       height:85px;
     }
     h1{
@@ -31,6 +32,33 @@
       padding:0;
       margin-left:10px;
       font-size:14px;
+    }
+  }
+
+  .bars{
+    width:100%;
+    button{
+      padding-top:0;
+      padding-bottom:0;
+    }
+    .current-time{
+      display:inline-block;
+      min-width:40px;
+    }
+    .progress-bar{
+      width:calc(100% - 90px);
+      display:inline-block;
+      background:$lightGrey;
+      border-radius:5px;
+      .bar{
+        background:linear-gradient(to right, $pink, $purple);
+        height:6px;
+        border-radius:5px;
+      }
+    }
+    .final-time{
+      display:inline-block;
+      min-width:40px;
     }
   }
 

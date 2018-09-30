@@ -1,5 +1,5 @@
 <app-sidebar></app-sidebar>
-<content>
+<content class="hasPlayer">
   <div class="row">
     <div class="col-md-12">
       <h1><b>Made for you</b></h1>
@@ -38,9 +38,17 @@
       <button class="btn noBg" (click)="router.navigate(['genres'])">See more</button>
     </div>
   </div>
-  <!-- Radio -->
-  <div class="section albums">
+  <div class="section genres">
+    <div class="row">
+      <div class="col-md-3 genres-box" *ngFor="let genre of listGenres">
+        <div class="genre" (click)="router.navigate(['/browse',genre.code])">
+          <h4>{{genre.name}}</h4>
+          <div class="image" [ngStyle]="{'background-image':'url(assets/images/genres/'+genre.image+')'}"></div>
+        </div>
+      </div>
+    </div>
   </div>
+  <!-- Radio -->
 
   <div class="row">
     <div class="col-md-8">
@@ -54,4 +62,3 @@
   <div class="section radio">
   </div>
 </content>
-<app-player></app-player>
