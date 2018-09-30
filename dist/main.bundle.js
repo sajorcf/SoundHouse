@@ -212,8 +212,8 @@ var APP_ROUTES = [
             { path: 'songs', component: __WEBPACK_IMPORTED_MODULE_6__components_my_songs_my_songs_component__["a" /* MySongsComponent */] },
         ]
     },
-    { path: '**', pathMatch: 'full', redirectTo: 'home' },
-    { path: '', pathMatch: 'full', redirectTo: 'home' }
+    { path: '**', pathMatch: 'full', redirectTo: 'start' },
+    { path: '', pathMatch: 'full', redirectTo: 'start' }
 ];
 var APP_ROUTING = __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* RouterModule */].forRoot(APP_ROUTES);
 
