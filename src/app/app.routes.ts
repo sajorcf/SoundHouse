@@ -31,8 +31,8 @@ const APP_ROUTES: Routes = [
     ]
   },
 
-  { path: '**', pathMatch: 'full', redirectTo: 'home' },
-  { path: '', pathMatch: 'full', redirectTo: 'home' }
+  { path: '**', pathMatch: 'full', redirectTo: 'start' },
+  { path: '', pathMatch: 'full', redirectTo: 'start' }
 ];
 
 export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES);

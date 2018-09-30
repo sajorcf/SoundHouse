@@ -1,1 +1,447 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+@import "~colors.scss";
+@import "~animations.scss";
+
+@font-face{
+  font-family:Quicksand;
+  font-weight:normal;
+  src:url(assets/fonts/Quicksand-Regular.otf) format('opentype');
+}
+@font-face{
+  font-family:Quicksand;
+  font-weight:bold;
+  src:url(assets/fonts/Quicksand-Bold.otf) format('opentype');
+}
+
+*{
+  font-family:Quicksand;
+}
+
+body{
+  background-image:linear-gradient(to bottom, $pink, $black);
+  background-size:cover;
+  background-repeat:no-repeat;
+  min-height:100vh;
+}
+
+.loading{
+  position:fixed;
+  top:0;
+  bottom:0;
+  right:0;
+  left:0;
+  z-index:-1;
+  opacity:0;
+  transition:0.2s;
+  background-color:rgba(0,0,0,0.8);
+  user-select:none;
+  &.login{
+    border-radius:10px;
+    position:absolute;
+  }
+  &.show{
+    opacity:1;
+    z-index:9999;
+    img{
+      pointer-events:none;
+      animation:rotating 1s linear infinite;
+    }
+  }
+  &-content{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    left:0;
+    right:0;
+    text-align:center;
+    z-index:1;
+    img{
+      max-width:100px;
+    }
+  }
+}
+
+app-sidebar + content{
+  margin-left:300px;
+}
+
+content{
+  padding:40px 25px;
+  display:block;
+  color:$white;
+
+  &.hasPlayer{
+    margin-bottom:85px;
+  }
+  .section{
+    padding:30px 0;
+  }
+}
+
+.btn{
+  &.btn-primary{
+    background:$darkPink;
+    border:0;
+    transition:0.2s;
+    &:hover{
+      background:darken($darkPink, 10);
+    }
+  }
+  &.noBg{
+    background:none;
+    border:0;
+    color:$white;
+    font-size:20px;
+
+    &.pause{
+      text-decoration:none;
+      &::before{
+        content:"\F04C";
+        font-family:FontAwesome;
+      }
+    }
+    &.play{
+      text-decoration:none;
+      &::before{
+        content:"\f04b";
+        font-family:FontAwesome;
+      }
+    }
+    &.inTitle{
+      font-size:2.5rem;
+      padding-top:0;
+      padding-bottom:0;
+      line-height:0;
+      vertical-align:baseline;
+    }
+    &.heart{
+      &::before{
+        content:'\f08a';
+        font-family:FontAwesome;
+        display:inline-block;
+      }
+      &.active{
+        &::before{
+          content:'\f004';
+        }
+      }
+    }
+    &.close{
+      &::before{
+        content:'\f00d';
+        font-family:FontAwesome;
+        display:inline-block;
+      }
+    }
+    &:hover:not(.noULine), &:active:not(.noULine), &:focus:not(.noULine){
+      box-shadow:none;
+      text-decoration:underline;
+    }
+  }
+}
+
+/** GENRES & ALBUMS **/
+
+.genres-box, .albums-box{
+  max-width:20%;
+  flex:0 0 0 20%;
+  margin-bottom:25px;
+
+  .genre, .album{
+    border-radius:5px;
+    height:100%;
+    position:relative;
+    overflow:auto;
+    text-align:center;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    max-width:170px;
+    min-height:77px;
+    background-color:$black;
+    transition:0.2s;
+    cursor:pointer;
+
+    .image{
+      background-size:cover;
+      background-position:center;
+      opacity:0.7;
+      filter:contrast(80%);
+      position:absolute;
+      top:0;
+      bottom:0;
+      right:0;
+      left:0;
+      z-index:0;
+      transition:0.2s;
+    }
+    h4{
+      font-weight:bold;
+      opacity:1;
+      text-shadow:0 1px 5px $black;
+      margin:0;
+      padding:10px 0;
+      position:relative;
+      z-index:1;
+      font-size:20px;
+    }
+    &:hover{
+      .image{
+        opacity:0.8;
+      }
+    }
+    &.selected{
+      background:$white;
+      &::after{
+        content:'\f00c';
+        position:absolute;
+        font-family:FontAwesome;
+        top:5px;
+        right:5px;
+        line-height:2.1em;
+        color:$white;
+        background:darken($pink, 5%);
+        border-radius:50%;
+        font-size:12px;
+        width:25px;
+        height:25px;
+      }
+      .image{
+        opacity:0.4;
+      }
+    }
+  }
+  .album{
+    min-height:170px;
+  }
+}
+
+.nav-tabs{
+  border:0;
+  margin-bottom:20px;
+  li{
+    a{
+      display:block;
+      font-size:16px;
+      text-decoration:none;
+      padding:10px 20px;
+      color:$white;
+      &.active{
+        border-bottom:2px solid $white;
+      }
+    }
+  }
+
+  & ~ .tab-content{
+    margin-top:30px;
+  }
+}
+
+
+.table{
+  tr{
+    transition:0.1s;
+    td:first-child{
+      width:90px;
+    }
+    th, td{
+      border-top:1px solid rgba($white, 0.3);
+      vertical-align:middle;
+      padding:0;
+    }
+    &:hover{
+      background:rgba($black, 0.1);
+    }
+  }
+  img{
+    width:60px;
+    height:40px;
+  }
+}
+
+.song-actions, .playlist-actions{
+  position:relative;
+  &:not(.playlist-actions)::before{
+    content:'\f142';
+    font-family:FontAwesome;
+    display:inline-block;
+  }
+  &:not(.song-actions)::before{
+    content:'\f141';
+    font-family:FontAwesome;
+    border:2px solid $white;
+    border-radius:100%;
+    width:33px;
+    height:33px;
+    line-height: 1.6em;
+    display:inline-block;
+  }
+  &:active{
+    opacity:0.7;
+  }
+  ul{
+    display:none;
+    position:absolute;
+    z-index:20;
+    left:100%;
+    top:10px;
+    background:$darkGrey;
+    border-radius:3px;
+    box-shadow:2px 2px 5px rgba($black, 0.5);
+    padding:8px 0;
+    list-style:none;
+    text-decoration:none;
+    li{
+      text-align:left;
+      padding:5px 20px;
+      font-size:16px;
+      &.sub{
+        position:relative;
+        &::after{
+          content:'\F105';
+          font-family:FontAwesome;
+          position:absolute;
+          right:10px;
+          top:6px;
+        }
+        &:hover{
+          ul{
+            top:0;
+            display:block;
+          }
+        }
+      }
+      &:hover{
+        background-color:darken($darkGrey, 10%);
+      }
+      &:active, &:focus{
+        box-shadow:none;
+      }
+    }
+  }
+}
+.table-responsive{
+  overflow-x:inherit;
+}
+.playlists-create{
+  background:rgba($black, 0.8);
+  position:fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index:10;
+  color:$white;
+  box-shadow:2px 2px 5px rgba($black, 0.5);
+  display:none;
+
+  .title{
+    border-bottom:1px solid $lightGrey;
+    padding:15px 20px;
+    font-size:18px;
+    text-align:center;
+    font-weight:bold;
+    position:relative;
+
+    .close{
+      position:absolute;
+      right:20px;
+      top:18px;
+    }
+  }
+  form{
+    display:inline-block;
+    padding:20px 35px;
+    width:100%;
+
+    .image-rendering{
+      height:220px;
+      width:100%;
+      position:relative;
+      background:$lightGrey;
+      border-radius:5px;
+      overflow:auto;
+      transition:0.2s;
+      &::before{
+        content:'\f030';
+        font-family:FontAwesome;
+        position:absolute;
+        color:darken($lightGrey, 15%);
+        top:50%;
+        transform:translateY(-50%);
+        right:0;
+        left:0;
+        margin:0 auto;
+        text-align:center;
+        font-size:70px;
+      }
+      & ~ input{
+        display:none;
+      }
+      label{
+        font-weight:bold;
+      }
+      &::after{
+        content:'';
+        transition:0.2s;
+      }
+      &:hover{
+        transition:0.2s;
+        &::after{
+          content:"Upload Image";
+          font-weight:bold;
+          font-size:14px;
+          position:absolute;
+          top:0;
+          bottom:0;
+          right:0;
+          left:0;
+          background:rgba($darkPink,0.8);
+          text-align:center;
+          cursor:pointer;
+          line-height:15em;
+          transition:0.2s;
+        }
+      }
+    }
+    .cancel{
+      font-size:14px;
+    }
+    .create{
+      font-size:14px;
+      padding-left:15px;
+      padding-right:15px;
+    }
+  }
+  .playlists-box{
+    max-width:650px;
+    width:100%;
+    border-radius:5px;
+    background:$darkGrey;
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    left:0;
+    right:0;
+    margin:0 auto;
+  }
+}
+
+.table-title{
+  font-size:20px;
+  font-weight:bold;
+  margin-bottom:20px;
+  display:inline-block;
+
+  + .reload{
+    float:right;
+    margin-bottom:10px;
+  }
+}
+
+#video{
+  position:fixed;
+  left:-1000%;
+}
