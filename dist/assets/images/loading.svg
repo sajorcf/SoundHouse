@@ -1,0 +1,6 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group">
+<path id="Fill 1" opacity="0.4" fill-rule="evenodd" clip-rule="evenodd" d="M50 10C27.944 10 10 27.944 10 50C10 72.056 27.944 90 50 90C72.056 90 90 72.056 90 50C90 27.944 72.056 10 50 10V10ZM0 50C0 22.43 22.43 0 50 0C77.57 0 100 22.43 100 50C100 77.57 77.57 100 50 100C22.43 100 0 77.57 0 50Z" fill="white"/>
+<path id="Fill 3" fill-rule="evenodd" clip-rule="evenodd" d="M50 100C22.43 100 0 77.57 0 50C0 47.238 2.239 45 5 45C7.761 45 10 47.238 10 50C10 72.056 27.944 90 50 90C52.762 90 55 92.238 55 95C55 97.762 52.762 100 50 100" fill="white"/>
+</g>
+</svg>
